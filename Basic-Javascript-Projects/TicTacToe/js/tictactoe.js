@@ -39,7 +39,7 @@ function placeXorO(squareNumber) { //This function if for placing x or o in a sq
 function checkWinConditions() { //This function parses the selectedSquares array to search for win conditions. drawWinLine function is called to draw line if condition is met
     if      (arrayIncludes('0X', '1X', '2X')) { drawWinLine(50,100,558,100) }   //X 0,1,2 condition
     else if (arrayIncludes('3X', '4X', '5X')) { drawWinLine(50,304,558,304) }   //X 3,4,5 condition
-    else if (arrayIncludes('6X', '7X', '8X')) { drawWinLine(100,50,100,508) }   //X 6,7,8 condition
+    else if (arrayIncludes('6X', '7X', '8X')) { drawWinLine(50,508,558,304) }   //X 6,7,8 condition
     else if (arrayIncludes('0X', '3X', '6X')) { drawWinLine(100,50,100,558) }   //X 0,3,6 condition
     else if (arrayIncludes('1X', '4X', '7X')) { drawWinLine(304,50,304,558) }   //X 1,4,7 condition
     else if (arrayIncludes('2X', '5X', '8X')) { drawWinLine(508,50,508,558) }   //X 2,5,8 condition
@@ -96,9 +96,9 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {  //This function util
         if (x1 <= x2 && y1 <= y2) {                         //this condition checks if we've reached the endpoint
             if (x < x2) { x += 10; }                        //this condition adds 10 to the previous end x point
             if (y < y2) { y += 10; }                        //this condition adds 10 to the previous end y point
-            if (x >= x2 && y <= y2) { cancelAnimationFrame(animationLoop); }    //this condition cancels our animation loop if we've reached the end points
+            if (x >= x2 && y >= y2) { cancelAnimationFrame(animationLoop); }    //this condition cancels our animation loop if we've reached the end points
         }
-        if (x1 <= x2 && y>= y2) {                           //this condition is similar to the one above
+        if (x1 <= x2 && y1 >= y2) {                           //this condition is similar to the one above
             if (x < x2) { x += 10; }                        //this is necessary for the 6,4,2 win condition
             if (y > y2) { y -= 10; }
             if (x >= x2 && y <= y2) { cancelAnimationFrame(animationLoop); }
