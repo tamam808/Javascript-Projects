@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Basic AJAX Demo</title>
+    </head>
+    <body>
+        <div id="demo">
+            <h1>This content will disappear!</h1>
+            <button type="button" onclick="getContent()">Click here</button>
+        </div>
+
+        <script>
+            function getContent() {
+                var ajax = new XMLHttpRequest();
+                ajax.onreadystatechange = function() {
+                    if (ajax.readyState == 4) {
+                        document.getElementById('demo').innerHTML = ajax.responseText;    
+                    }
+                };
+                ajax.open("GET", "challenge2.html", true);
+                ajax.send();
+            }
+        </script>
+    </body>
